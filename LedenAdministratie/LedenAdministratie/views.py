@@ -115,7 +115,7 @@ class LidAanmeldView(CreateView):
         # Send a confirmation e-mail to the user
         subject = 'Bevestiging aanmelding St. Ansfridus'
         body = render_to_string('aanmelden_email_user.html', context={'lid': form.instance})
-        send_mail(subject=subject, message=body, from_email=settings.EMAIL_SENDER,
+        send_mail(subject=lid.age, message=body, from_email=settings.EMAIL_SENDER,
                   recipient_list=[form.instance.email_address])
 
         return super(LidAanmeldView, self).form_valid(form)
