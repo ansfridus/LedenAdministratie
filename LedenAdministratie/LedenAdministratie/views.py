@@ -113,12 +113,7 @@ class LidAanmeldView(CreateView):
                   recipient_list=settings.EMAIL_RECIPIENTS_NEW)
 
         # Send a confirmation e-mail to the user
-        if model.age <= 12
-        then
-             subject = 'Bevestiging aanmelding St. Ansfridus Bevers'
-        else
-             subject = 'Bevestiging aanmelding St. Ansfridus'
-        endif
+        subject = 'Bevestiging aanmelding St. Ansfridus'
         body = render_to_string('aanmelden_email_user.html', context={'lid': form.instance})
         send_mail(subject=subject, message=body, from_email=settings.EMAIL_SENDER,
                   recipient_list=[form.instance.email_address])
