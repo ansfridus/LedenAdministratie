@@ -30,16 +30,14 @@
                 <th>Naam</th>
                 <th>E-mail</th>
                 <th>Geb. Datum</th>
+				<th>Leeftijd</th>
                 <th>Straat</th>
                 <th>Woonplaats</th>
                 <th>Tel. Nr.</th>
                 {% if speltak == 'wachtlijst' %}
                 <th>Aangemeld op</th>
-                {% else %}
-                <th>Scouting Nr.</th>
+                <th>Speltak</th>				
                 {% endif %}
-                <th>Leeftijd</th>
-                <th>Speltak</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -51,20 +49,19 @@
                     <td>{{ lid }}</td>
                     <td>{{ lid.email_address }}</td>
                     <td>{{ lid.gebdat|date:"d-m-Y" }}</td>
+                    <td>{{ lid.age }}</td>
                     <td>{{ lid.straat }}</td>
                     <td>{{ lid.woonplaats }}</td>
                     <td>{{ lid.telnr }}</td>
                     {% if speltak == 'wachtlijst' %}
                         <td>{{ lid.aanmeld_datum|date:"d-m-Y" }}</td>
-                    {% else %}
-                        <td>{{ lid.scouting_nr }}</td>
-                    {% endif %}
-                    <td>{{ lid.age }}</td>
                     {% if lid.speltak == 'wachtlijst' %}
                         <td>{{ lid.wachtlijst_speltak|title }}</td>
                     {% else %}
                         <td>{{ lid.get_speltak_display }}</td>
                     {% endif %}
+                    {% endif %}
+
                     {% if perms.LedenAdministratie.change_lid %}
                         <td>
                             <a href="{% url 'lid_edit' lid.pk %}" class="btn-sm btn-success">
