@@ -2,31 +2,36 @@
 {% load widget_tweaks %}
 
 {% block navbar %}
-    <ul class="nav nav-sidebar">
-        {% for taktag, takname in lid.LIJST_CHOICES %}
-            <li {% if lid.speltak == taktag %} class="active" {% endif %}>
-                <a href="{% url 'ledenlijst' taktag %}">{{ takname }}</a>
-            </li>
+   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <span>Filters</span>
+</h6>
 
-        {% endfor %}
+<ul class="nav flex-column">
+    {% for taktag, takname in lid.LIJST_CHOICES %}
+    <li class="nav-item">
+        <a {% if lid.speltak == taktag %} class="nav-link active" {% else %} class="nav-link" {% endif %}
+           href="{% url 'ledenlijst' taktag %}">
+            <span data-feather="filter"></span>{{ takname }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 
-    </ul>
+
 {% endblock %}
 
 {% block content %}
 
-    {% include 'alerts.html' %}
+{% include 'alerts.html' %}
 
-    <form method="post">
-        {% csrf_token %}
+<form method="post">
+    {% csrf_token %}
 
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Basisgegevens
-                </div>
-                <div class="panel-body">
-
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header text-white bg-secondary">Basisgegevens</div>
+                <div class="form-row">
                     <div class="col-md-5">
 
                         <label for="id_first_name">Voornaam *</label>
@@ -60,14 +65,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+	
+        <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header text-white bg-secondary">Contactgegevens Ouders</div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Contactgegevens Ouders
-                </div>
-                <div class="panel-body">
+                <div class="form-row">
+                    <div class="col-md-5">       
 
-                    <div class="col-md-5">
+
 
                         <label for="id_mobiel_ouder1">Mobiel Ouder 1</label>
                         {{ form.mobiel_ouder1|add_class:'form-control' }}
@@ -88,11 +97,14 @@
                     </div>
                 </div>
             </div>
+			        </div>
+    </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Gegevens Scouting
-                </div>
+                <div class="panel-body">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header text-white bg-secondary">Gegevens Scouting</div>
                 <div class="panel-body">
 
                     <div class="col-md-5">
@@ -131,12 +143,15 @@
 
         </div>
 
-        <br>
-        {% if perms.LedenAdministratie.change_lid %}
-            <button type="submit" class="btn btn-success">Opslaan</button>
-        {% endif %}
-        <button onclick="javascript:history.go(-1)" type="button" class="btn btn-default">Annuleren</button>
-    </form>
+ </div>
+
+    <br>
+    {% if perms.LedenAdministratie.change_lid %}
+    <button type="submit" class="btn btn-success">Opslaan</button>
+    {% endif %}
+    <button onclick="javascript:history.go(-1)" type="button" class="btn btn-secondary">Annuleren</button>
+</form>
+<br/>
 
 
 {% endblock %}
