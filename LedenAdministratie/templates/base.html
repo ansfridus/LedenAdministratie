@@ -41,7 +41,7 @@
 
                         {% for type in types %}
                             <li class="nav-item">
-                                <a {% if filter_slug == type.slug %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{% url 'members' type.slug %}">
+                                <a {% if filter_slug == type.slug %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{% url 'ledenlijst' type.slug %}">
                                     <span data-feather="filter"></span>{{ type.display_name }}
                                 </a>
                             </li>
