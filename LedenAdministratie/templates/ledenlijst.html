@@ -29,37 +29,42 @@
             <tr>
                 <th>Naam</th>
                 <th>E-mail</th>
+                {% if speltak == 'wachtlijst' %}
+                	<th>Aangemeld op</th>
+                	<th>Speltak</th>
+					<th>Leeftijd</th>
+				{% else %}				
                 <th>Geb. Datum</th>
-				<th>Leeftijd</th>
-                <th>Straat</th>
+				<th>Straat</th>
                 <th>Woonplaats</th>
                 <th>Tel. Nr.</th>
-                {% if speltak == 'wachtlijst' %}
-                <th>Aangemeld op</th>
-                <th>Speltak</th>				
-                {% endif %}
+				{% endif %}
                 <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             {% for lid in leden %}
-
-                <tr>
+			<tr>
                     <td>{{ lid }}</td>
                     <td>{{ lid.email_address }}</td>
+					{% if speltak == 'wachtlijst' %}
+						<td>{{ lid.aanmeld_datum|date:"d-m-Y" }}</td>
+						{% if lid.speltak == 'wachtlijst' %}
+                        	<td>{{ lid.wachtlijst_speltak|title }}</td>
+                    	{% else %}
+                        	<td>{{ lid.get_speltak_display }}</td>
+                    	{% endif %}
+						<td>{{ lid.age }}</td>
+					{% else %}
                     <td>{{ lid.gebdat|date:"d-m-Y" }}</td>
-                    <td>{{ lid.age }}</td>
+                    
                     <td>{{ lid.straat }}</td>
                     <td>{{ lid.woonplaats }}</td>
                     <td>{{ lid.telnr }}</td>
-                    {% if speltak == 'wachtlijst' %}
-                        <td>{{ lid.aanmeld_datum|date:"d-m-Y" }}</td>
-                    {% if lid.speltak == 'wachtlijst' %}
-                        <td>{{ lid.wachtlijst_speltak|title }}</td>
-                    {% else %}
-                        <td>{{ lid.get_speltak_display }}</td>
-                    {% endif %}
+
+                        
+                    
                     {% endif %}
 
                     {% if perms.LedenAdministratie.change_lid %}
