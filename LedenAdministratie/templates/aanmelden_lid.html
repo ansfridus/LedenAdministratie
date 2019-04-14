@@ -33,14 +33,12 @@
         <form method="post">
             {% csrf_token %}
 
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Basisgegevens
-                    </div>
-                    <div class="panel-body">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header text-white bg-secondary">Basisgegevens</div>
+                    <div class="form-row">
 
-                        <div class="col-sm-6">
+                        <div class="col-md-5">
                             <label for="id_first_name">Voornaam *</label>
                             {{ form.first_name|add_class:'form-control' }}
 
@@ -54,7 +52,7 @@
                             {{ form.gebdat|add_class:'form-control'|attr:'placeholder:DD-MM-JJJJ' }}
 
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-md-5">
                             <label for="id_last_name">Achternaam *</label>
                             {{ form.last_name|add_class:'form-control' }}
 
@@ -72,13 +70,13 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="col-md-10">
+                    <div class="card-header text-white bg-secondary">
                         Contactgegevens Ouders
                     </div>
-                    <div class="panel-body">
+                    <div class="form-row">
 
-                        <div class="col-sm-6">
+                        <div class="col-md-5">
 
                             <label for="id_mobiel_ouder1">Mobiel Ouder 1</label>
                             {{ form.mobiel_ouder1|add_class:'form-control' }}
@@ -90,7 +88,7 @@
                             {{ form.telnr|add_class:'form-control' }}
 
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-md-5">
                             <label for="id_mobiel_ouder2">Mobiel Ouder 2</label>
                             {{ form.mobiel_ouder2|add_class:'form-control' }}
 
