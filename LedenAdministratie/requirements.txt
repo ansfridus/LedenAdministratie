@@ -1,5 +1,5 @@
-Django>2
-django-widget-tweaks==1.4.3
+Django~=1.11
+django-widget-tweaks==1.4.1
 mysqlclient
 python-dateutil
 django-allauth
