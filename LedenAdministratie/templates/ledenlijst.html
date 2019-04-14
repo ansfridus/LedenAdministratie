@@ -32,13 +32,8 @@
                 {% if speltak == 'wachtlijst' %}
                 	<th>Aangemeld op</th>
                 	<th>Speltak</th>
-					<th>Leeftijd</th>
-				{% else %}				
-                <th>Geb. Datum</th>
-				<th>Straat</th>
-                <th>Woonplaats</th>
-                <th>Tel. Nr.</th>
-				{% endif %}
+				{% endif %}			
+				<th>Leeftijd</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -55,17 +50,11 @@
                     	{% else %}
                         	<td>{{ lid.get_speltak_display }}</td>
                     	{% endif %}
-						<td>{{ lid.age }}</td>
-					{% else %}
-                    <td>{{ lid.gebdat|date:"d-m-Y" }}</td>
-                    
-                    <td>{{ lid.straat }}</td>
-                    <td>{{ lid.woonplaats }}</td>
-                    <td>{{ lid.telnr }}</td>
-
-                        
-                    
                     {% endif %}
+					<td>{{ lid.age }}</td>					
+                
+                    
+
 
                     {% if perms.LedenAdministratie.change_lid %}
                         <td>
@@ -76,12 +65,6 @@
                         <td>
                             <a href="{% url 'lid_delete' lid.pk %}" class="btn-sm btn-danger">
                                 <span data-feather="trash-2"></span>
-                            </a>
-                        </td>
-                    {% else %}
-                        <td>
-                            <a href="{% url 'lid_edit' lid.pk %}" class="btn-sm btn-success">
-                                <span data-feather="edit"></span>
                             </a>
                         </td>
                     {% endif %}
