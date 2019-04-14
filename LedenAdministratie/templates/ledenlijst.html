@@ -28,7 +28,7 @@
             <thead class="thead-light">
             <tr>
                 <th>Naam</th>
-                <th>E-mail</th>
+                <th>Foto Publiek?</th>
                 {% if speltak == 'wachtlijst' %}
                 	<th>Aangemeld op</th>
                 	<th>Speltak</th>
@@ -47,7 +47,7 @@
             {% for lid in leden %}
 			<tr>
                     <td>{{ lid }}</td>
-                    <td>{{ lid.email_address }}</td>
+                    <td>{{ lid.foto }}</td>
 					{% if speltak == 'wachtlijst' %}
 						<td>{{ lid.aanmeld_datum|date:"d-m-Y" }}</td>
 						{% if lid.speltak == 'wachtlijst' %}
