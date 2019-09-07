@@ -10,7 +10,7 @@
                 <a {% if speltak == taktag %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{% url 'ledenlijst' taktag %}">
                     <span data-feather="filter"></span>{{ takname }}
                 </a>
-            </li> 
+            </li>
 
         {% endfor %}
 
@@ -32,28 +32,31 @@
                 {% if speltak == 'wachtlijst' %}
                 	<th>Aangemeld op</th>
                 	<th>Speltak</th>
-				{% endif %}			
-				<th>Leeftijd</th>
-                <th></th>
-                <th></th>
+                  <th>Geb Datum</th>
+				        {% endif %}
+				          <th>Leeftijd</th>
+                  <th></th>
+                  <th></th>
             </tr>
             </thead>
             <tbody>
             {% for lid in leden %}
-			<tr>
-                    <td>{{ lid }}</td>
-                    <td>{{ lid.foto }}</td>
-					{% if speltak == 'wachtlijst' %}
-						<td>{{ lid.aanmeld_datum|date:"d-m-Y" }}</td>
-						{% if lid.speltak == 'wachtlijst' %}
+			      <tr>
+                 <td>{{ lid }}</td>
+                 <td>{{ lid.foto }}</td>
+					       {% if speltak == 'wachtlijst' %}
+						         <td>{{ lid.aanmeld_datum|date:"d-m-Y" }}</td>
+						         {% if lid.speltak == 'wachtlijst' %}
                         	<td>{{ lid.wachtlijst_speltak|title }}</td>
-                    	{% else %}
+                     {% else %}
                         	<td>{{ lid.get_speltak_display }}</td>
-                    	{% endif %}
-                    {% endif %}
-					<td>{{ lid.age }}</td>					
-                
-                    
+                     {% endif %}
+                     <td>{{ lid.gebdat}}
+                {% endif %}
+
+					<td>{{ lid.age }}</td>
+
+
 
 
                     {% if perms.LedenAdministratie.change_lid %}
