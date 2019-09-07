@@ -65,6 +65,8 @@
                                 <span data-feather="edit"></span>
                             </a>
                         </td>
+                    {% endif %}
+                    {% if perms.LedenAdministratie.delete_lid %}
                         <td>
                             <a href="{% url 'lid_delete' lid.pk %}" class="btn-sm btn-danger">
                                 <span data-feather="trash-2"></span>
