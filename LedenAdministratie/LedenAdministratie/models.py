@@ -95,6 +95,7 @@ class Lid(models.Model):
     opmerkingen = models.TextField(max_length=1024, blank=True)
     bijzonderheden = models.TextField(max_length=1024, blank=True)
     fotopubliek = models.BooleanField(default=True, blank=False, verbose_name="Foto's publiceren toegestaan")
+    fotobinnen = models.BooleanField(default=True, blank=False, verbose_name="Foto's binnengroep toegestaan")
     age = property(_calculate_age)
     wachtlijst_speltak = property(_calculate_speltak)
     foto = property(_calculate_foto)
