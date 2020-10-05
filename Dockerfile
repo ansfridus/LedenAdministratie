@@ -1,7 +1,7 @@
 FROM python:3.5-alpine
 
 # Set the file maintainer (your name - the file's author)
-MAINTAINER Rients Brandsma
+MAINTAINER Rients BrandsmA
 
 COPY LedenAdministratie/requirements.txt /srv/LedenAdministratie/requirements.txt
 
